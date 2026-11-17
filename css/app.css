@@ -1,0 +1,69 @@
+/* NutriFit DZ — واجهة RTL، الهاتف أولًا. الألوان كلها متغيرات في :root. */
+:root {
+  --bg: #f6f8f5; --surface: #ffffff; --text: #17201a; --muted: #5c6b60; --line: #dbe3dc;
+  --brand: #1f7a4d; --brand-ink: #ffffff; --warn: #8a5a00; --warn-bg: #fff4d6; --err: #a3262a; --err-bg: #fde8e8;
+  --F: #1f7a4d; --R: #1d5fa8; --O: #8a5a00; --C: #7a3d9a;
+  --radius: 14px; box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #101713; --surface: #18221c; --text: #e8efe9; --muted: #9db0a2; --line: #2a3a2f;
+    --brand: #3fb97a; --brand-ink: #08170f; --warn: #f0c36a; --warn-bg: #2d2410; --err: #ff9a9d; --err-bg: #301517;
+    --F: #3fb97a; --R: #6aa9f0; --O: #f0c36a; --C: #c58bea; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, "Segoe UI", Tahoma, "Noto Sans Arabic", sans-serif; }
+main { padding: 12px 14px 120px; max-width: 640px; margin: 0 auto; }
+h2 { margin: 8px 0 4px; font-size: 1.35rem; }
+h3 { margin: 18px 0 6px; font-size: 1.02rem; }
+.muted { color: var(--muted); font-size: .9rem; margin: 4px 0 8px; }
+small { color: var(--muted); }
+.top { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center;
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 14px 8px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top span { color: var(--muted); font-size: .9rem; }
+.capsule { position: sticky; top: calc(46px + env(safe-area-inset-top, 0px)); z-index: 4; display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 6px; padding: 8px 14px; background: var(--surface); border-bottom: 1px solid var(--line); text-align: center; }
+.cap small { display: block; font-size: .72rem; }
+.cap b { font-size: 1.05rem; } .cap em { font-style: normal; font-size: .7rem; color: var(--muted); margin-inline-start: 2px; }
+.cap.over b { color: var(--err); }
+.card, .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin: 8px 0; }
+button { font: inherit; color: inherit; }
+.opt, .food { display: block; width: 100%; text-align: start; cursor: pointer; }
+.opt span, .opt small, .food span, .food small { display: block; }
+.opt.on, .food.on { border-color: var(--brand); outline: 2px solid var(--brand); }
+.food.blocked { opacity: .55; }
+.food .al { color: var(--warn); }
+.seg { display: flex; gap: 6px; margin: 8px 0; }
+.seg button { flex: 1; padding: 10px 6px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; cursor: pointer; }
+.seg button.on { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pcts { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; }
+.fld { display: block; margin: 8px 0; }
+.fld span { display: block; font-size: .85rem; color: var(--muted); margin-bottom: 2px; }
+input[type=text], input:not([type]), input[inputmode] { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font: inherit; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
+.chip.on { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); font-weight: 600; }
+.chk { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0; }
+.chk input { margin-top: 5px; width: 20px; height: 20px; }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.stat { margin: 0; } .stat small { display: block; } .stat b { font-size: 1.7rem; } .stat em { font-style: normal; color: var(--muted); margin-inline-start: 4px; }
+.meta { margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.badge { display: inline-block; min-width: 20px; text-align: center; padding: 0 6px; border-radius: 6px; font-size: .75rem; font-weight: 700; color: #fff; }
+.c-F { background: var(--F); } .c-R { background: var(--R); } .c-O { background: var(--O); } .c-C { background: var(--C); }
+.src { font-size: .72rem; color: var(--muted); }
+.calc div { padding: 2px 0; }
+.warns { margin: 8px 0; padding: 8px 26px; background: var(--warn-bg); color: var(--warn); border-radius: 10px; }
+.errs { margin: 8px 0; padding: 8px 26px; background: var(--err-bg); color: var(--err); border-radius: 10px; }
+.dev { margin: 8px 0; padding: 10px 12px; background: var(--err-bg); color: var(--err); border-radius: 10px; font-weight: 600; }
+.adv { margin: 12px 0; } .adv summary { cursor: pointer; font-weight: 600; }
+.ref { font-size: .8rem; direction: ltr; text-align: left; color: var(--muted); }
+.meal ul, .card ul { margin: 6px 0 0; padding-inline-start: 20px; }
+.nav { position: fixed; inset: auto 0 0 0; display: flex; justify-content: space-between; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--line); }
+.btn { padding: 12px 22px; border: 0; border-radius: 12px; background: var(--brand); color: var(--brand-ink); font-weight: 700; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--brand); }
+.btn.danger { background: var(--err-bg); color: var(--err); }
+.row { display: flex; gap: 8px; margin-top: 10px; } .row .btn { flex: 1; }
+.sheet-bg { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 20; }
+.sheet { position: fixed; inset: auto 0 0 0; z-index: 21; background: var(--surface); border-radius: 18px 18px 0 0; padding: 16px 14px calc(16px + env(safe-area-inset-bottom, 0px)); max-width: 640px; margin: 0 auto; }
+.preview { margin-top: 10px; padding: 10px; border-radius: 10px; background: var(--bg); }
